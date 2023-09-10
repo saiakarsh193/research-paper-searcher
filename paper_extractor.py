@@ -8,10 +8,9 @@ from tqdm import tqdm
 
 _PAPER_CONFERENCES = Literal[
     "Interspeech",
-    "ICASSP"
 ]
 
-def _load_bs4(link: str):
+def _load_bs4(link: str) -> BeautifulSoup:
     html = urllib.request.urlopen(link)
     htmlParse = BeautifulSoup(html, 'html.parser')
     return htmlParse

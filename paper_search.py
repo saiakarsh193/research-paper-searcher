@@ -1,5 +1,5 @@
 from typing import List, Union, Optional
-from paper_extracter import PaperExtractor, ResearchPaper, _PAPER_CONFERENCES
+from paper_extractor import PaperExtractor, ResearchPaper, _PAPER_CONFERENCES
 from search_engine import SearchEngine
 
 class PaperSearch(PaperExtractor):
