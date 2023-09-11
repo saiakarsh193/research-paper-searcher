@@ -21,7 +21,8 @@ class PaperSearch(PaperExtractor):
                     'category': paper.category,
                     'title': paper.title,
                     'abstract': paper.abstract
-                })
+                }
+            )
     
     def _load_papers_from_file(self, load_path: str) -> None:
         with open(load_path, 'r') as f:
@@ -40,10 +41,11 @@ class PaperSearch(PaperExtractor):
         if title != None:
             search_query["title"] = title
         score_map = self.search_engine.search(query=search_query, max_results=max_results)
+        qstr = (f"query \"{query}\"") + (f", category \"{category}\"" if category != None else "") + (f", title \"{title}\"" if title != None else "")
         if score_map[0][0] == 0: # the best result score is 0
-            print(f"No results found for query \"{query}\"")
+            print(f"No results found for {qstr}")
         else:
-            print(f"Top results found for query \"{query}\":")
+            print(f"Top results found for {qstr}:")
             for ind, (score, page_ind) in enumerate(score_map):
                 print(f"{ind}: ({page_ind}) -> {score}")
                 print(self.papers[page_ind])
@@ -51,6 +53,7 @@ class PaperSearch(PaperExtractor):
 if __name__ == "__main__":
     # ps = PaperSearch(conference="Interspeech", year=2023, deep_extract=False)
     # ps._write_papers_to_file("interspeech23_raw.txt")
-    ps = PaperSearch(load_path="interspeech23_raw.txt")
+    # ps = PaperSearch(load_path="interspeech23_raw.txt")
+    ps = PaperSearch(load_path=["interspeech23_raw.txt", "interspeech22_raw.txt"])
     ps.search(category="speech synthesis", query="learn", max_results=4)
     ps.search(category="Pathological", query="", max_results=4)

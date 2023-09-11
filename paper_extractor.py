@@ -52,7 +52,7 @@ class ResearchPaper:
             abstract = self.abstract[: max_len - 3] + "..." if len(self.abstract) > max_len else self.abstract
         else:
             abstract = ""
-        return f"ResearchPaper({title}|{authors}|{self.category})"
+        return f"ResearchPaper({title}|{self.category}|{self.year})"
         # return f"ResearchPaper({title}|{authors}|{abstract})"
     
     @staticmethod

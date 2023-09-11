@@ -28,11 +28,18 @@ se = SearchEngine({'category': 3, 'title': 2})
 se.add_page(
     page_id=0,
     page_data={
-    'category': "Contrastive language-audio pretraining (CLAP) has become a new paradigm to learn audio concepts with audio-text pairs.",
-    'title': "CLAP"
-    })
+        'category': "Contrastive language-audio pretraining (CLAP) has become a new paradigm to learn audio concepts with audio-text pairs.",
+        'title': "CLAP"
+    }
+)
 # to search for a section-wise query and get sorted results
-se.search({'category': "audio"}, max_results=2)
+print(se.search(
+    query={
+        'category': "learn",
+        '_ALL': "text"
+    },
+    max_results=2
+))
 ```
 
 

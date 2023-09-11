@@ -99,6 +99,13 @@ if __name__ == "__main__":
     se.add_page(
         page_id=0,
         page_data={
-        'category': "Contrastive language-audio pretraining (CLAP) has become a new paradigm to learn audio concepts with audio-text pairs. CLAP models have shown unprecedented performance as zero-shot classifiers on downstream tasks. To further adapt CLAP with domain-specific knowledge, a popular method is to finetune its audio encoder with available labelled examples. However, this is challenging in low-shot scenarios, as the amount of annotations is limited compared to the model size. In this work, we introduce a Training-efficient (Treff) adapter to rapidly learn with a small set of examples while maintaining the capacity for zero-shot classification. First, we propose a cross-attention linear model (CALM) to map a set of labelled examples and test audio to test labels. Second, we find initialising CALM as a cosine measurement improves our Treff adapter even without training. The Treff adapter beats metric-based methods in few-shot settings and yields competitive results to fully-supervised methods."
-        })
-    se.search({'category': "learn"})
+            'category': "Contrastive language-audio pretraining (CLAP) has become a new paradigm to learn audio concepts with audio-text pairs. CLAP models have shown unprecedented performance as zero-shot classifiers on downstream tasks. To further adapt CLAP with domain-specific knowledge, a popular method is to finetune its audio encoder with available labelled examples. However, this is challenging in low-shot scenarios, as the amount of annotations is limited compared to the model size. In this work, we introduce a Training-efficient (Treff) adapter to rapidly learn with a small set of examples while maintaining the capacity for zero-shot classification. First, we propose a cross-attention linear model (CALM) to map a set of labelled examples and test audio to test labels. Second, we find initialising CALM as a cosine measurement improves our Treff adapter even without training. The Treff adapter beats metric-based methods in few-shot settings and yields competitive results to fully-supervised methods."
+        }
+    )
+    print(se.search(
+        query={
+            'category': "learn",
+            '_ALL': "text"
+        },
+        max_results=2
+    ))
